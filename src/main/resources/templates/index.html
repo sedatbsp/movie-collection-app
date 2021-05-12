@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Film Koleksiyonu Uygulaması - Özgür Yazılım</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: 'Roboto';
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+    </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Özgür Yazılım A.Ş.</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Anasayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+
+                <a th:href="@{/logout}">
+                    <button sec:authorize="isAuthenticated()" class="btn btn-outline-dark" type="submit">Çıkış Yap
+                    </button>
+                </a>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<br>
+<div class="container">
+    <b>Merhaba, <span sec:authentication="principal.username"></span></b> <br>
+    <hr>
+    <div class="alert alert-light" role="alert">
+        <h3 class="alert-heading">Özgür Yazılım AŞ neler yapar?</h3>
+        <p>
+        <h5 class="alert-heading">Yönümüz (Diğer Adıyla “Vizyonumuz”)</h5>
+        Yazılım, makinelere neredeyse sınırsız uyarlanabilme yeteneği kazandıran, daha önce hakim olunamayan
+        karmaşıklıkta modellerin kurulabilmesine ve kullanılabilmesine olanak tanıyan, böylece kişi ve kurumların
+        kendilerini daha yetenekli kılmasını sağlayan, şimdiye kadar geliştirilmiş en önemli teknolojilerinden biridir.
+        <br><br>
+        Herkesin kodlarına ulaşma ve özgürce kullanma hakkı olan yazılımlar, gerek toplumda yazılım teknolojisi
+        konusunda bilgi birikiminin artması, gerekse kişi ve kurumların kendilerine özgü ihtiyaçlarını karşılayacak
+        yazılımları var olan yazılımlardan türetebilmelerine olanak sağlaması nedeniyle, hem toplumsal hem de ekonomik
+        olarak değerli bir araçtır.
+        <br><br>
+        Özgür Yazılım AŞ, bireylerin ve kurumların özgür veya açık kaynak kodlu yazılımlardan en iyi şekilde
+        faydalanabilmelerini sağlayan öncü bir kuruluştur.
+        </p>
+
+        <p>
+        <h5 class="alert-heading">Yolumuz (Diğer Adıyla “Misyonumuz”)</h5>
+        Özgür Yazılım AŞ, öncelikle özgür veya açık kaynak kodlu yazılımları kullanarak ürün ve hizmet üretir. Bunu
+        gerçekleştirmek için yazılım geliştirir, entegre eder, destek ve barındırma hizmetleri verir. Bilgi birikimini
+        ve geliştirdiği yazılımları özgürce erişilebilecek şekilde yayınlamaya ve paylaşmaya çalışır.
+        </p>
+
+        <hr>
+        <p class="mb-0">Özgür Yazılım A.Ş. bu projeyi iyi kötü yapmış olan Sedatı stajyer olarak alır mı acaba?
+            &#128558;</p>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>
