@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Film Güncelle</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: 'Roboto';
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+    </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/index}">Özgür Yazılım A.Ş.</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Anasayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/movies}">Filmler</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/insert}">Film Ekle</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Diğerleri
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Oyuncular</a></li>
+                        <li><a class="dropdown-item" href="#">Filmler</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+
+
+            </ul>
+            <div class="d-flex">
+
+                <a th:href="@{/logout}">
+                    <button sec:authorize="isAuthenticated()" class="btn btn-dark btn-sm" type="submit">Çıkış Yap
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-3 ">
+            <form th:action="@{/update}" method="post" th:object="${movie}" >
+                <input type="hidden" th:field="*{id}"/>
+                <div class="form-group mb-3">
+                    <label class="control-label" for="name">
+                        Film Adı
+                    </label>
+                    <input id="name" class="form-control" th:field="*{name}" autofocus="autofocus" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="control-label" for="releaseYear">
+                        Yayın Yılı
+                    </label>
+                    <input id="releaseYear" class="form-control" th:field="*{releaseYear}" autofocus="autofocus" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="control-label" for="genre">
+                        Türü
+                    </label>
+                    <input id="genre" class="form-control" th:field="*{genre}"  autofocus="autofocus" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="control-label" for="description">
+                        Film Açıklaması
+                    </label>
+                    <textarea id="description" class="form-control" rows="4" th:field="*{description}" maxlength="1000" autofocus="autofocus" required>
+                    </textarea>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="control-label" for="actors">
+                        Oyuncuları Ekle <small>(" , " ile ayırınız. Örn: Ali, Veli)</small>
+                    </label>
+                    <textarea id="actors" class="form-control" rows="2" th:field="*{actors}" placeholder="Şu an hatalı.(çalışmıyor, boş bırakınız.)" maxlength="255" autofocus="autofocus">
+                    </textarea>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="control-label">
+                        Medya Ekle
+                    </label>
+                    <input type="url"  placeholder="Kapak url ekleyiniz. Örn: https://siteadresi.com"
+                           pattern="https://.*" class="form-control" name="media" th:field="*{media}"  >
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="control-label" for="languageOption">
+                        Dil Seçeneği
+                    </label>
+                    <input id="languageOption" class="form-control" th:field="*{languageOption}" autofocus="autofocus" required>
+                </div>
+
+                <div class="form-group mb-3 d-grid gap-2 col-6 mx-auto">
+                    <button type="submit" class="btn btn-success">Filmi Güncelle</button>
+                </div>
+
+
+
+
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>
