@@ -1,4 +1,4 @@
-package com.sedatbsp.ozguryazilim.web.dto;
+package com.sedatbsp.ozguryazilim.business.dto;
 
 public class UserRegistrationDto {
 

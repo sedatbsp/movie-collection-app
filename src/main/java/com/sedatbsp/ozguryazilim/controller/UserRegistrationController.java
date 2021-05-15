@@ -1,7 +1,7 @@
-package com.sedatbsp.ozguryazilim.web;
+package com.sedatbsp.ozguryazilim.controller;
 
-import com.sedatbsp.ozguryazilim.service.IUserService;
-import com.sedatbsp.ozguryazilim.web.dto.UserRegistrationDto;
+import com.sedatbsp.ozguryazilim.business.abstracts.IUserService;
+import com.sedatbsp.ozguryazilim.business.dto.UserRegistrationDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;

@@ -1,9 +1,10 @@
-package com.sedatbsp.ozguryazilim.service;
+package com.sedatbsp.ozguryazilim.business.concretes;
 
+import com.sedatbsp.ozguryazilim.business.abstracts.IUserService;
 import com.sedatbsp.ozguryazilim.model.Role;
 import com.sedatbsp.ozguryazilim.model.User;
 import com.sedatbsp.ozguryazilim.repository.IUserRepository;
-import com.sedatbsp.ozguryazilim.web.dto.UserRegistrationDto;
+import com.sedatbsp.ozguryazilim.business.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,14 +18,14 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 @Service
-public class UserService implements IUserService{
+public class UserManager implements IUserService {
 
     private IUserRepository userRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    public UserService(IUserRepository userRepository) {
+    public UserManager(IUserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -37,13 +38,13 @@ public class UserService implements IUserService{
                 passwordEncoder.encode(registrationDto.getPassword()),
                 Arrays.asList(new Role("ROLE_USER")));
 
-        return userRepository.save(user);
+        return (User) userRepository.save(user);
 
     }
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(s);
+        User user = (User) userRepository.findByEmail(s);
         if(s == null){
             throw new UsernameNotFoundException("Geçersiz kullanıcı adı veya şifre.");
         }

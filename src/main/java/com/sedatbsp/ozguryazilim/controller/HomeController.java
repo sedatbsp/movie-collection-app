@@ -1,4 +1,4 @@
-package com.sedatbsp.ozguryazilim.web;
+package com.sedatbsp.ozguryazilim.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +11,10 @@ public class HomeController {
         return "login";
     }
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String index(){
         return "index";
     }
+
 
 }

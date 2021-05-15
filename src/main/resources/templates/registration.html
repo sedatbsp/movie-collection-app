@@ -26,7 +26,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Özgür Yazılım A.Ş.</a>
+        <a class="navbar-brand" th:href="@{/index}">Özgür Yazılım A.Ş.</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,19 +34,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Anasayfa</a>
+                    <a class="nav-link" th:href="@{/index}">Anasayfa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" th:href="@{/movies}">Filmler</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/insert}">Film Ekle</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
+                        Diğerleri
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Oyuncular</a></li>
+                        <li><a class="dropdown-item" href="#">Filmler</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -56,14 +59,21 @@
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
-            </ul>
-            <form class="d-flex">
 
-            </form>
+
+            </ul>
+            <div class="d-flex">
+
+                <a th:href="@{/logout}">
+                    <button sec:authorize="isAuthenticated()" class="btn btn-dark btn-sm" type="submit">Çıkış Yap
+                    </button>
+                </a>
+            </div>
         </div>
     </div>
 </nav>
 
+<br>
 
 <div class="container">
     <div class="row">
@@ -97,28 +107,28 @@
                     <label class="control-label" for="firstName">
                         Adınız
                     </label>
-                    <input id="firstName" class="form-control" th:field="*{firstName}" required>
+                    <input id="firstName" class="form-control" th:field="*{firstName}" placeholder="Adınızı giriniz." autofocus="autofocus" required>
                 </div>
 
                 <div class="form-group mb-3">
                     <label class="control-label" for="lastName">
                         Soyadınız
                     </label>
-                    <input id="lastName" class="form-control" th:field="*{lastName}" required>
+                    <input id="lastName" class="form-control" th:field="*{lastName}" placeholder="Soyadınızı giriniz." autofocus="autofocus" required>
                 </div>
 
                 <div class="form-group mb-3">
                     <label class="control-label" for="email">
                         Email Adresiniz
                     </label>
-                    <input id="email" class="form-control" th:field="*{email}" required>
+                    <input id="email" class="form-control" th:field="*{email}" placeholder="Emailinizi giriniz." autofocus="autofocus" required>
                 </div>
 
                 <div class="form-group mb-3">
                     <label class="control-label" for="password">
                         Parolanız
                     </label>
-                    <input id="password" type="password" class="form-control" th:field="*{password}" required>
+                    <input id="password" type="password" class="form-control" th:field="*{password}" placeholder="Parolanızı giriniz." autofocus="autofocus" required>
                 </div>
 
                 <div class="form-group mb-3 d-grid gap-2 col-6 mx-auto">
