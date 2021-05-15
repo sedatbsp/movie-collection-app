@@ -33,23 +33,6 @@ public class Movie {
 
     }
 
-    public Movie(String name, int releaseYear, String genre, String description, String media, String languageOption) {
-        this.name = name;
-        this.releaseYear = releaseYear;
-        this.genre = genre;
-        this.description = description;
-        this.media = media;
-        this.languageOption = languageOption;
-    }
-
-
-    public Movie(String name, int releaseYear, String genre, String description, String languageOption) {
-        this.name = name;
-        this.releaseYear = releaseYear;
-        this.genre = genre;
-        this.description = description;
-        this.languageOption = languageOption;
-    }
 
     public Movie(Long id,String name, int releaseYear, String genre, String description, String media, String languageOption, String nameOfActors) {
         this.id = id;

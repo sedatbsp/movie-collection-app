@@ -11,9 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -24,8 +21,6 @@ public class MovieManager implements IMovieService {
     @Autowired
     private IActorRepository actorRepository;
 
-    @PersistenceContext
-    private EntityManager entityManager;
 
     @Transactional
     @Override
@@ -35,7 +30,7 @@ public class MovieManager implements IMovieService {
 
         for (int i=0; i<=actorsArr.length-1;i++){
             Actor actor = new Actor();
-            actor.setName(actorsArr[i].toString());
+            actor.setName(actorsArr[i]);
             actors[i] = actor;
         }
 
@@ -50,15 +45,9 @@ public class MovieManager implements IMovieService {
                 movie.getActors().toString()
 
         );
-        newMovie.setActors(Arrays.asList(actors));
         movieRepository.save(newMovie);
     }
 
-    @Transactional
-    @Override
-    public void update(Movie movie) {
-        entityManager.merge(movie);
-    }
 
     @Transactional
     @Override

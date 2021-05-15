@@ -9,7 +9,6 @@ import java.util.List;
 public interface IMovieService {
 
     void add(Movie movie);
-    void update(Movie movie);
     void delete(int movie);
     Movie findById(int id) throws NotFoundException;
 
