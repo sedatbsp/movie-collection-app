@@ -1,5 +1,10 @@
 package com.sedatbsp.ozguryazilim.business.dto;
 
+import com.sedatbsp.ozguryazilim.model.Role;
+
+import javax.persistence.*;
+import java.util.Collection;
+
 public class UserRegistrationDto {
 
     private String firstName;
@@ -7,7 +12,17 @@ public class UserRegistrationDto {
     private String email;
     private String password;
 
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id",referencedColumnName = "id"))
+    private Collection<Role> roles;
 
+
+    private String role;
     public UserRegistrationDto(){
 
     }
@@ -49,5 +64,22 @@ public class UserRegistrationDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
+    }
+
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

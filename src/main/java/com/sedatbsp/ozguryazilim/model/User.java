@@ -16,6 +16,7 @@ public class User {
     private String email;
     private String password;
 
+
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_roles",
@@ -36,6 +37,7 @@ public class User {
         this.password = password;
         this.roles = roles;
     }
+
 
     public Long getId() {
         return id;
@@ -84,4 +86,6 @@ public class User {
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
+
+
 }

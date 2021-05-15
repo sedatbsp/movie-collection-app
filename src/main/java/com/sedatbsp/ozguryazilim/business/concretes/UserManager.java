@@ -13,8 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,31 +29,33 @@ public class UserManager implements IUserService {
     }
 
     @Override
-    public User save(UserRegistrationDto registrationDto) {
+    public User save(UserRegistrationDto registrationDto, String role) {
         User user = new User(
                 registrationDto.getFirstName(),
                 registrationDto.getLastName(),
                 registrationDto.getEmail(),
                 passwordEncoder.encode(registrationDto.getPassword()),
-                Arrays.asList(new Role("ROLE_USER")));
-
-        return (User) userRepository.save(user);
+                Arrays.asList(new Role(role))
+                );
+        return userRepository.save(user);
 
     }
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = (User) userRepository.findByEmail(s);
-        if(s == null){
+        if (s == null) {
             throw new UsernameNotFoundException("Geçersiz kullanıcı adı veya şifre.");
         }
 
-        return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(),mapRolesToAuthorities(user.getRoles()));
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
+                mapRolesToAuthorities(user.getRoles()));
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){
         return roles.stream().map(role-> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
+
 
 
 }
