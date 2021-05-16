@@ -4,6 +4,7 @@ import com.sedatbsp.ozguryazilim.model.Movie;
 import com.sedatbsp.ozguryazilim.business.abstracts.IMovieService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,12 @@ public class MovieController {
     @Autowired
     public MovieController(IMovieService movieService) {
         this.movieService = movieService;
+    }
+
+    @GetMapping("/movie")
+    public String homePage(Model model) {
+        return findPaginated(1,model,"name","asc");
+
     }
 
     @GetMapping("/insert")
@@ -67,6 +74,33 @@ public class MovieController {
         Movie movie = movieService.findById(id);
         model.addAttribute("movie", movie);
         return "update";
+    }
+
+    @GetMapping(value = "/view")
+    public String searchMovie(Model model,@RequestParam String search, @RequestParam String searchType){
+        List<Movie> movies = movieService.find(search,searchType);
+        model.addAttribute("movies",movies);
+        return "/view";
+    }
+
+    @GetMapping("/page/{pageNo}")
+    public String findPaginated(@PathVariable(value = "pageNo") int pageNo,Model model,
+            @RequestParam("sortField") String sortField,@RequestParam("sortDir") String sortDir){
+        int pageSize=5;
+        Page<Movie> page = movieService.findPaginated(pageNo,pageSize,sortField,sortDir);
+        List<Movie> listMovies = page.getContent();
+
+        model.addAttribute("currentPage",pageNo);
+        model.addAttribute("totalPages",page.getTotalPages());
+        model.addAttribute("totalItems",page.getTotalElements());
+
+        model.addAttribute("sortField",sortField);
+        model.addAttribute("sortDir",sortDir);
+        model.addAttribute("reverseSortDir",sortDir.equals("asc") ? "desc" : "asc");
+
+        model.addAttribute("listMovies",listMovies);
+        return "/movies";
+
     }
 
 
