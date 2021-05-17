@@ -17,8 +17,6 @@ public interface IMovieService {
     List<Movie> getAll();
     List<Actor> getAllActors(String name);
 
-    Page<Movie> findPaginated(int pageNo,int pageSize,String sortField,String sortDirection);
-
     List<Movie> getDesc();
     List<Movie> getAsc();
 

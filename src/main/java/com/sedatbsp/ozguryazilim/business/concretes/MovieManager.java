@@ -8,14 +8,12 @@ import com.sedatbsp.ozguryazilim.repository.IActorRepository;
 import com.sedatbsp.ozguryazilim.repository.IMovieRepository;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MovieManager implements IMovieService {
@@ -29,10 +27,11 @@ public class MovieManager implements IMovieService {
     @Transactional
     @Override
     public void add(Movie movie) {
-        String[] actorsArr = movie.getActors().toArray(String[]::new);
+        //String[] actorsArr = movie.getActors().toArray(String[]::new);
+        //Actor[] actors = new Actor[actorsArr.length];
+        String[] actorsArr = movie.getNameOfActors().trim().split(",");
         Actor[] actors = new Actor[actorsArr.length];
-
-        for (int i=0; i<=actorsArr.length-1;i++){
+        for (int i=0; i<actors.length;i++){
             Actor actor = new Actor();
             actor.setName(actorsArr[i]);
             actors[i] = actor;
@@ -46,7 +45,7 @@ public class MovieManager implements IMovieService {
                 movie.getDescription(),
                 movie.getMedia(),
                 movie.getLanguageOption(),
-                movie.getActors().toString()
+                Arrays.stream(actors).collect(Collectors.toList())
 
         );
         movieRepository.save(newMovie);
@@ -88,13 +87,6 @@ public class MovieManager implements IMovieService {
         return null;
     }
 
-    @Override
-    public Page<Movie> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection) {
-
-        Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
-        Pageable pageable = PageRequest.of(pageNo-1,pageSize,sort);
-        return movieRepository.findAll(pageable);
-    }
 
     @Override
     public List<Movie> getDesc() {

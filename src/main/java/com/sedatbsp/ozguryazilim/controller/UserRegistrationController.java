@@ -28,18 +28,9 @@ public class UserRegistrationController {
     @PostMapping
     public String registerUserAccount(@ModelAttribute("user")UserRegistrationDto userRegistrationDto,@RequestParam String roles){
 
-        if(roles == "ADMIN"){
-            userService.save(userRegistrationDto,roles);
-            return "redirect:/registration?success";
-        }
         userService.save(userRegistrationDto,roles);
         return "redirect:/registration?success";
 
-
-
     }
-
-
-
 
 }

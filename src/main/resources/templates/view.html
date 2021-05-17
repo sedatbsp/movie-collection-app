@@ -82,16 +82,21 @@
                 <img th:src="${movies.media}" th:alt="${movies.name}" class="card-img">
                 <div class="card-img-overlay">
                     <h5 class="card-title"><b th:text="${movies.name}"></b>  |  <small th:text="${movies.languageOption}"></small> </h5>
-                    <p class="card-text"><span th:text="${movies.description}"></span></p>
                     <p class="card-text"><span th:text="${movies.releaseYear}"></span> - <b th:text="${movies.genre}"></b> </p>
+                    <p class="card-text"><span th:text="${movies.languageOption}"></span></p>
                 </div>
             </div>
         </div>
         <div class="col-4">
             <div class="col">
-                Yayın Tarihi : <span th:text="${movies.releaseYear}"></span> | <b th:text="${movies.genre}"></b>
-                <br>
-                <span th:text="${movies.languageOption}"></span>
+                <b>Yayın Tarihi : </b> <span th:text="${movies.releaseYear}"></span><br>
+                <b>Tür :</b><span th:text="${movies.genre}"></span><br>
+                <b>Dil :</b><span th:text="${movies.languageOption}"></span> <br>
+                <hr>
+                <b>Oyuncular : </b><br>
+                <span th:each="actor : ${movies.actors}">
+                    <span th:text="'&#10026; ' + ${actor.name}"></span><br>
+                </span>
 
             </div>
         </div>

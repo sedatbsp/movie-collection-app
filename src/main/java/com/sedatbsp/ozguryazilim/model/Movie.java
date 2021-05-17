@@ -55,6 +55,17 @@ public class Movie {
         this.nameOfActors = nameOfActors;
     }
 
+    public Movie(Long id,String name, int releaseYear, String genre, String description, String media, String languageOption, List<Actor> actors) {
+        this.id = id;
+        this.name = name;
+        this.releaseYear = releaseYear;
+        this.genre = genre;
+        this.description = description;
+        this.media = media;
+        this.languageOption = languageOption;
+        this.actors = actors;
+    }
+
     public Long getId() {
         return id;
     }

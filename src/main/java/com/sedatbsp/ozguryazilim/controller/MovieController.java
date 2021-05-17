@@ -21,12 +21,6 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @GetMapping("/movie")
-    public String homePage(Model model) {
-        return findPaginated(1,model,"name","asc");
-
-    }
-
     @GetMapping("/insert")
     public String insert(Model model) {
         model.addAttribute("movie", new Movie());
@@ -83,25 +77,6 @@ public class MovieController {
         return "/view";
     }
 
-    @GetMapping("/page/{pageNo}")
-    public String findPaginated(@PathVariable(value = "pageNo") int pageNo,Model model,
-            @RequestParam("sortField") String sortField,@RequestParam("sortDir") String sortDir){
-        int pageSize=5;
-        Page<Movie> page = movieService.findPaginated(pageNo,pageSize,sortField,sortDir);
-        List<Movie> listMovies = page.getContent();
-
-        model.addAttribute("currentPage",pageNo);
-        model.addAttribute("totalPages",page.getTotalPages());
-        model.addAttribute("totalItems",page.getTotalElements());
-
-        model.addAttribute("sortField",sortField);
-        model.addAttribute("sortDir",sortDir);
-        model.addAttribute("reverseSortDir",sortDir.equals("asc") ? "desc" : "asc");
-
-        model.addAttribute("listMovies",listMovies);
-        return "/movies";
-
-    }
 
 
 }

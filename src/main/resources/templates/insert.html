@@ -108,10 +108,10 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <label class="control-label" for="actors">
-                        Oyuncuları Ekle <small>(" , " ile ayırınız. Örn: Ali, Veli)</small>
+                    <label class="control-label" for="nameOfActors">
+                        Oyuncuları Ekle <small>(<b style="color:red;">" , " ile ayırınız.</b> Örn: Ali, Veli)</small>
                     </label>
-                    <textarea id="actors" class="form-control" rows="2" th:field="*{actors}" placeholder="Şu an hatalı.(çalışmıyor, boş bırakınız.)" maxlength="255" autofocus="autofocus">
+                    <textarea id="nameOfActors" class="form-control" rows="2" th:field="*{nameOfActors}" placeholder="Örn: Wentworth Miller, Sarah Wayne Callies, Amaury Nolasco" maxlength="255" autofocus="autofocus">
                     </textarea>
                 </div>
 
@@ -143,8 +143,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 

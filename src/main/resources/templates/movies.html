@@ -28,6 +28,14 @@
             color: green;
         }
 
+        .lineCount {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4; /* number of lines to show */
+            -webkit-box-orient: vertical;
+        }
+
     </style>
 
 </head>
@@ -119,17 +127,9 @@
                 <tr>
                     <th scope="col">Media(url)</th>
                     <th scope="col">Id</th>
-                    <th scope="col">
-                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">Film
-                            Adı</a>
-                    </th>
-                    <th scope="col">
-                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=releaseYear&sortDir=' + ${reverseSortDir}}">Yayın
-                            Yılı</a>
-                    </th>
-                    <th scope="col">
-                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=genre&sortDir=' + ${reverseSortDir}}">Türü</a>
-                    </th>
+                    <th scope="col">Film Adı</th>
+                    <th scope="col">Yayın Yılı</th>
+                    <th scope="col">Türü</th>
                     <th scope="col">Açıklaması</th>
                     <th scope="col">Oyuncular</th>
                     <th scope="col">Dili Seçenekleri</th>
@@ -140,52 +140,32 @@
                 <tr>
 
                     <th scope="row"><a th:href="@{'/movie/view/'+${movies.id}}">
-                        <img th:src="${movies.media}" th:alt="${movies.name}" width="60" height="60"/></a>
+                        <img th:src="${movies.media}" th:alt="${movies.name}" width="90" height="90"/></a>
                     </th>
                     <td><a th:href="@{'/movie/view/'+${movies.id}}"><b th:text="${movies.id}"></b></a></td>
                     <td><a th:href="@{'/movie/view/'+${movies.id}}"><b th:text="${movies.name}"></b></a></td>
                     <td th:text="${movies.releaseYear}"></td>
                     <td th:text="${movies.genre}"></td>
                     <td th:text="${movies.description}"></td>
-                    <td th:text="${movies.actors}"></td>
-                    <td th:text="${movies.languageOption}"></td>
+                    <td class="lineCount">
+                        <span th:each="actor : ${movies.actors}">
+                            <small th:text="${actor.name}"></small><br>
+                        </span>
 
-                    <td sec:authorize="hasAuthority('ADMIN')">
-                        <a th:href="@{'/movie/delete/'+${movies.id}}" class="btn btn-danger btn-sm">Sil</a>
-                        <a th:href="@{'/movie/update/'+${movies.id}}" class="btn btn-secondary  btn-sm">Düzenle</a>
                     </td>
+
+                <td th:text="${movies.languageOption}"></td>
+
+                <td sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{'/movie/delete/'+${movies.id}}" class="btn btn-danger btn-sm">Sil</a>
+                    <a th:href="@{'/movie/update/'+${movies.id}}" class="btn btn-secondary  btn-sm">Düzenle</a>
+                </td>
 
 
                 </tr>
 
                 </tbody>
             </table>
-
-            <div th:if="${totalPages > 1}">
-                <div class="row col-sm-10">
-                    <div class="col-sm-2">
-                        Total Rows: [[${totalItems}]]
-                    </div>
-                    <div class="col-sm-1">
-     <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-      <a th:if="${currentPage != i}"
-         th:href="@{'/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
-      <span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
-     </span>
-                    </div>
-                    <div class="col-sm-1">
-                        <a th:if="${currentPage < totalPages}"
-                           th:href="@{'/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
-                        <span th:unless="${currentPage < totalPages}">Next</span>
-                    </div>
-
-                    <div class="col-sm-1">
-                        <a th:if="${currentPage < totalPages}"
-                           th:href="@{'/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
-                        <span th:unless="${currentPage < totalPages}">Last</span>
-                    </div>
-                </div>
-            </div>
 
 
         </div>
