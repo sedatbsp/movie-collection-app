@@ -1,0 +1,18 @@
+body {
+    font-family: 'Roboto';
+    color: #364C62;
+}
+
+label {
+    font-weight: 600;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+a:hover {
+    color: #04A59E;
+}

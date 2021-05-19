@@ -27,8 +27,6 @@ public class MovieManager implements IMovieService {
     @Transactional
     @Override
     public void add(Movie movie) {
-        //String[] actorsArr = movie.getActors().toArray(String[]::new);
-        //Actor[] actors = new Actor[actorsArr.length];
         String[] actorsArr = movie.getNameOfActors().trim().split(",");
         Actor[] actors = new Actor[actorsArr.length];
         for (int i=0; i<actors.length;i++){
@@ -45,6 +43,7 @@ public class MovieManager implements IMovieService {
                 movie.getDescription(),
                 movie.getMedia(),
                 movie.getLanguageOption(),
+                movie.getNameOfActors(),
                 Arrays.stream(actors).collect(Collectors.toList())
 
         );
@@ -83,8 +82,9 @@ public class MovieManager implements IMovieService {
     }
 
     @Override
-    public List<Actor> getAllActors(String name) {
-        return null;
+    public List<Actor> getAllActors() {
+        return actorRepository.findAll();
+        //return null;
     }
 
 

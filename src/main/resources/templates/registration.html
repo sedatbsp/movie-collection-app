@@ -10,6 +10,7 @@
           integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 
     <link rel="stylesheet" th:href="@{/css/registration.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 
     <style>
         body {
@@ -26,7 +27,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/index}">Özgür Yazılım A.Ş.</a>
+        <a class="navbar-brand" th:href="@{/index}">Film Koleksiyonu</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -42,24 +43,9 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/insert}">Film Ekle</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Diğerleri
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Oyuncular</a></li>
-                        <li><a class="dropdown-item" href="#">Filmler</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
-
 
             </ul>
             <div class="d-flex">
@@ -168,6 +154,15 @@
     </div>
 
 </div>
+
+<br>
+<hr class="container featurette-divider">
+<!-- FOOTER -->
+<footer class="container">
+    <p class="text-end"><a th:href="@{/index}">Anasayfa</a></p>
+    <p>&copy; 2021 Staj, Proje. &middot; <a th:href="@{/login}">Giriş Yap</a></p>
+    <p style="font-size: small"><a th:href="@{/insert}">Hadi durma sende bir film ekle. </a></p>
+</footer>
 
 
 <script th:src="@{/js/registration.js}"> </script>

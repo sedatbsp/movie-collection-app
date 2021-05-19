@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:layout="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Film Koleksiyonu Uygulaması - Özgür Yazılım</title>
@@ -9,23 +8,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 
-    <style>
-        body {
-            font-family: 'Roboto';
-        }
-
-        label {
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-    </style>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/index}">Özgür Yazılım A.Ş.</a>
+        <a class="navbar-brand" th:href="@{/index}">Film Koleksiyonu</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -41,24 +31,9 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/insert}">Film Ekle</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Diğerleri
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Oyuncular</a></li>
-                        <li><a class="dropdown-item" href="#">Filmler</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
-
 
             </ul>
             <div class="d-flex">
@@ -75,30 +50,54 @@
 <br>
 
 <div class="container">
-    <b>Merhaba, <span sec:authentication="principal.username"></span></b> <br>
+    <br>
     <hr>
     <div class="alert alert-light" role="alert">
-        <h3 class="alert-heading">Özgür Yazılım AŞ neler yapar?</h3>
+        <h3 class="alert-heading">Anasayfa</h3>
         <p>
-        <h5 class="alert-heading">Yönümüz (Diğer Adıyla “Vizyonumuz”)</h5>
-        Yazılım, makinelere neredeyse sınırsız uyarlanabilme yeteneği kazandıran, daha önce hakim olunamayan
-        karmaşıklıkta modellerin kurulabilmesine ve kullanılabilmesine olanak tanıyan, böylece kişi ve kurumların
-        kendilerini daha yetenekli kılmasını sağlayan, şimdiye kadar geliştirilmiş en önemli teknolojilerinden biridir.
-        <br><br>
-        Herkesin kodlarına ulaşma ve özgürce kullanma hakkı olan yazılımlar, gerek toplumda yazılım teknolojisi
-        konusunda bilgi birikiminin artması, gerekse kişi ve kurumların kendilerine özgü ihtiyaçlarını karşılayacak
-        yazılımları var olan yazılımlardan türetebilmelerine olanak sağlaması nedeniyle, hem toplumsal hem de ekonomik
-        olarak değerli bir araçtır.
-        <br><br>
-        Özgür Yazılım AŞ, bireylerin ve kurumların özgür veya açık kaynak kodlu yazılımlardan en iyi şekilde
-        faydalanabilmelerini sağlayan öncü bir kuruluştur.
+        <h5 class="alert-heading">Lorem Ipsum Nedir?</h5>
+        Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir
+        matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri
+        endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı
+        zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset
+        yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü
+        yayıncılık yazılımları ile popüler olmuştur.
         </p>
 
         <p>
-        <h5 class="alert-heading">Yolumuz (Diğer Adıyla “Misyonumuz”)</h5>
-        Özgür Yazılım AŞ, öncelikle özgür veya açık kaynak kodlu yazılımları kullanarak ürün ve hizmet üretir. Bunu
-        gerçekleştirmek için yazılım geliştirir, entegre eder, destek ve barındırma hizmetleri verir. Bilgi birikimini
-        ve geliştirdiği yazılımları özgürce erişilebilecek şekilde yayınlamaya ve paylaşmaya çalışır.
+        <h5 class="alert-heading">Neden Kullanırız?</h5>
+        Yinelenen bir sayfa içeriğinin okuyucunun dikkatini dağıttığı bilinen bir gerçektir. Lorem Ipsum kullanmanın
+        amacı, sürekli 'buraya metin gelecek, buraya metin gelecek' yazmaya kıyasla daha dengeli bir harf dağılımı
+        sağlayarak okunurluğu artırmasıdır. Şu anda birçok masaüstü yayıncılık paketi ve web sayfa düzenleyicisi,
+        varsayılan mıgır metinler olarak Lorem Ipsum kullanmaktadır. Ayrıca arama motorlarında 'lorem ipsum' anahtar
+        sözcükleri ile arama yapıldığında henüz tasarım aşamasında olan çok sayıda site listelenir. Yıllar içinde, bazen
+        kazara, bazen bilinçli olarak (örneğin mizah katılarak), çeşitli sürümleri geliştirilmiştir.
+        </p>
+
+        <p>
+        <h5 class="alert-heading">Nereden Gelir?</h5>
+        Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden oluşmaz. Kökleri M.Ö. 45 tarihinden bu yana klasik
+        Latin edebiyatına kadar uzanan 2000 yıllık bir geçmişi vardır. Virginia'daki Hampden-Sydney College'dan Latince
+        profesörü Richard McClintock, bir Lorem Ipsum pasajında geçen ve anlaşılması en güç sözcüklerden biri olan
+        'consectetur' sözcüğünün klasik edebiyattaki örneklerini incelediğinde kesin bir kaynağa ulaşmıştır. Lorm Ipsum,
+        Çiçero tarafından M.Ö. 45 tarihinde kaleme alınan "de Finibus Bonorum et Malorum" (İyi ve Kötünün Uç Sınırları)
+        eserinin 1.10.32 ve 1.10.33 sayılı bölümlerinden gelmektedir. Bu kitap, ahlak kuramı üzerine bir tezdir ve
+        Rönesans döneminde çok popüler olmuştur. Lorem Ipsum pasajının ilk satırı olan "Lorem ipsum dolor sit amet"
+        1.10.32 sayılı bölümdeki bir satırdan gelmektedir.
+
+        1500'lerden beri kullanılmakta olan standard Lorem Ipsum metinleri ilgilenenler için yeniden üretilmiştir.
+        Çiçero tarafından yazılan 1.10.32 ve 1.10.33 bölümleri de 1914 H. Rackham çevirisinden alınan İngilizce
+        sürümleri eşliğinde özgün biçiminden yeniden üretilmiştir.
+        </p>
+
+        <p>
+        <h5 class="alert-heading">Nereden Bulabilirim?</h5>
+        Lorem Ipsum pasajlarının birçok çeşitlemesi vardır. Ancak bunların büyük bir çoğunluğu mizah katılarak veya
+        rastgele sözcükler eklenerek değiştirilmişlerdir. Eğer bir Lorem Ipsum pasajı kullanacaksanız, metin aralarına
+        utandırıcı sözcükler gizlenmediğinden emin olmanız gerekir. İnternet'teki tüm Lorem Ipsum üreteçleri önceden
+        belirlenmiş metin bloklarını yineler. Bu da, bu üreteci İnternet üzerindeki gerçek Lorem Ipsum üreteci yapar. Bu
+        üreteç, 200'den fazla Latince sözcük ve onlara ait cümle yapılarını içeren bir sözlük kullanır. Bu nedenle,
+        üretilen Lorem Ipsum metinleri yinelemelerden, mizahtan ve karakteristik olmayan sözcüklerden uzaktır.
         </p>
 
         <hr>
@@ -107,6 +106,13 @@
     </div>
 </div>
 
+<br><br>
+<!-- FOOTER -->
+<footer class="container">
+    <p class="text-end"><a th:href="@{/index}">Anasayfa</a></p>
+    <p>&copy; 2021 Staj, Proje. &middot; <a th:href="@{/movies}">Filmler</a></p>
+    <p style="font-size: small"><a th:href="@{/insert}">Hadi durma sende bir film ekle. </a></p>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"

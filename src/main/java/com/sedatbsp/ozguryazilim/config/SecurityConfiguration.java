@@ -29,9 +29,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/registration**",
+                "/index**",
+                "/movies**",
+                "/movie/view/**",
                 "/js/**",
-                "/css/**",
-                "/img/**").permitAll().anyRequest().authenticated()
+                "/css/**").permitAll().anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll()
                 .and().logout().invalidateHttpSession(true).clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

@@ -9,23 +9,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 
-    <style>
-        body {
-            font-family: 'Roboto';
-        }
-
-        label {
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-    </style>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/index}">Özgür Yazılım A.Ş.</a>
+        <a class="navbar-brand" th:href="@{/index}">Film Koleksiyonu</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -41,24 +32,9 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/insert}">Film Ekle</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Diğerleri
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Oyuncular</a></li>
-                        <li><a class="dropdown-item" href="#">Filmler</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
-
 
             </ul>
             <div class="d-flex">
@@ -73,17 +49,15 @@
 </nav>
 
 <br>
-
-
 <div class="container">
     <div class="row">
+        <h2><b th:text="${movies.name}"></b></h2>
         <div class="col-8">
             <div class="card bg-dark text-white">
-                <img th:src="${movies.media}" th:alt="${movies.name}" class="card-img">
-                <div class="card-img-overlay">
+                <img th:src="${movies.media}" th:alt="${movies.name}" class="card-img" width="60%" height="60%">
+                <div class="card-img-overlay" style="color: #000000;">
                     <h5 class="card-title"><b th:text="${movies.name}"></b>  |  <small th:text="${movies.languageOption}"></small> </h5>
                     <p class="card-text"><span th:text="${movies.releaseYear}"></span> - <b th:text="${movies.genre}"></b> </p>
-                    <p class="card-text"><span th:text="${movies.languageOption}"></span></p>
                 </div>
             </div>
         </div>
@@ -104,25 +78,32 @@
 
     <div class="row mt-3">
         <div class="col-8">
-            <b th:text="${movies.name}"></b>
             <br><br>
             <span th:text="${movies.description}"></span>
         </div>
-        <div class="col-4">
+        <div class="col-4 d-grid gap-2">
             <a th:href="@{/movies}">
-                <button type="button" class="btn btn-secondary btn-sm">Filmler listesine geri dön.</button>
-            </a>
+                <button type="button" class="btn btn-dark btn-sm">Filmler listesine geri dön.</button>
+            </a><br>
             <a th:href="@{'/movie/delete/'+${movies.id}}" sec:authorize="hasAuthority('ADMIN')" class="btn btn-danger btn-sm">Sil</a>
-            <a th:href="@{'/movie/update/'+${movies.id}}" sec:authorize="hasAuthority('ADMIN')" class="btn btn-warning btn-sm">Düzenle</a>
+            <a th:href="@{'/movie/update/'+${movies.id}}" sec:authorize="hasAuthority('ADMIN')" class="btn btn-secondary btn-sm">Düzenle</a>
 
         </div>
     </div>
 
 </div>
 
-<hr>
 
 <br><br>
+<br>
+<hr class="container featurette-divider">
+<!-- FOOTER -->
+<footer class="container">
+    <p class="text-end"><a th:href="@{/index}">Anasayfa</a></p>
+    <p>&copy; 2021 Staj, Proje. &middot; <a th:href="@{/movies}">Filmler</a></p>
+    <p style="font-size: small"><a th:href="@{/insert}">Hadi durma sende bir film ekle. </a></p>
+</footer>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"

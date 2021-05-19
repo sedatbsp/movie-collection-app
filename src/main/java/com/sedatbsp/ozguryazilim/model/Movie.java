@@ -33,8 +33,7 @@ public class Movie {
 
     }
 
-
-    public Movie(Long id,String name, int releaseYear, String genre, String description, String media, String languageOption, String nameOfActors) {
+    public Movie(Long id,String name, int releaseYear, String genre, String description, String media, String languageOption, String nameOfActors, List<Actor> actors) {
         this.id = id;
         this.name = name;
         this.releaseYear = releaseYear;
@@ -43,9 +42,10 @@ public class Movie {
         this.media = media;
         this.languageOption = languageOption;
         this.nameOfActors = nameOfActors;
+        this.actors = actors;
     }
 
-    public Movie(String name, int releaseYear, String genre, String description, String media, String languageOption, String nameOfActors) {
+    public Movie(String name, int releaseYear, String genre, String description, String media, String languageOption, String nameOfActors, List<Actor> actors) {
         this.name = name;
         this.releaseYear = releaseYear;
         this.genre = genre;
@@ -53,16 +53,6 @@ public class Movie {
         this.media = media;
         this.languageOption = languageOption;
         this.nameOfActors = nameOfActors;
-    }
-
-    public Movie(Long id,String name, int releaseYear, String genre, String description, String media, String languageOption, List<Actor> actors) {
-        this.id = id;
-        this.name = name;
-        this.releaseYear = releaseYear;
-        this.genre = genre;
-        this.description = description;
-        this.media = media;
-        this.languageOption = languageOption;
         this.actors = actors;
     }
 

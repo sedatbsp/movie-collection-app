@@ -1,5 +1,6 @@
 package com.sedatbsp.ozguryazilim.controller;
 
+import com.sedatbsp.ozguryazilim.model.Actor;
 import com.sedatbsp.ozguryazilim.model.Movie;
 import com.sedatbsp.ozguryazilim.business.abstracts.IMovieService;
 import javassist.NotFoundException;
@@ -76,7 +77,6 @@ public class MovieController {
         model.addAttribute("movies",movies);
         return "/view";
     }
-
 
 
 }
