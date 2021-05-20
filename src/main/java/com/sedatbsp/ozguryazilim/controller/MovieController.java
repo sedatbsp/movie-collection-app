@@ -25,6 +25,7 @@ public class MovieController {
     @GetMapping("/insert")
     public String insert(Model model) {
         model.addAttribute("movie", new Movie());
+        model.addAttribute("pageTitle","Film Ekle");
         return "insert";
 
     }
@@ -33,6 +34,7 @@ public class MovieController {
     public String getAll(Model model) {
         List<Movie> movies = movieService.getAll();
         model.addAttribute("movies", movies);
+        model.addAttribute("pageTitle", "Filmler");
         return "movies";
     }
 
@@ -61,6 +63,7 @@ public class MovieController {
     public String viewMovie(Model model, @PathVariable("id") Integer id) throws NotFoundException {
         Movie movies = movieService.findById(id);
         model.addAttribute("movies", movies);
+        model.addAttribute("pageTitle",movies.getName());
         return "view";
     }
 
@@ -68,15 +71,10 @@ public class MovieController {
     public String updateMovie(Model model, @PathVariable("id") Integer id) throws NotFoundException {
         Movie movie = movieService.findById(id);
         model.addAttribute("movie", movie);
+        model.addAttribute("pageTitle","Güncelleme | "+movie.getName());
         return "update";
     }
 
-    @GetMapping(value = "/view")
-    public String searchMovie(Model model,@RequestParam String search, @RequestParam String searchType){
-        List<Movie> movies = movieService.find(search,searchType);
-        model.addAttribute("movies",movies);
-        return "/view";
-    }
 
 
 }

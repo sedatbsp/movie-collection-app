@@ -11,6 +11,9 @@ public interface IMovieService {
     void add(Movie movie);
     void delete(int movie);
     Movie findById(int id) throws NotFoundException;
+    Movie getMovieByName(String name) throws NotFoundException;
+
+
 
     List<Movie> find (String name, String searchType);
     List<Movie> getAll();

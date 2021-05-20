@@ -3,6 +3,7 @@ package com.sedatbsp.ozguryazilim.controller;
 import com.sedatbsp.ozguryazilim.business.abstracts.IUserService;
 import com.sedatbsp.ozguryazilim.business.dto.UserRegistrationDto;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -21,7 +22,8 @@ public class UserRegistrationController {
     }
 
     @GetMapping
-    public String showRegistrationForm(){
+    public String showRegistrationForm(Model model){
+        model.addAttribute("pageTitle","Kayıt Ol");
         return "registration";
     }
 

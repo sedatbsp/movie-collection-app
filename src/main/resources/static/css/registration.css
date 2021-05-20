@@ -4,19 +4,16 @@
     background: #f8f8f8;
     color: #000;
     position: relative;
-    margin-top: 25px;
-    padding-left:25px;
+    margin-top: 20px;
+    padding-left:15px;
     padding-bottom: 5px;
 }
 
 #message p {
-    padding-left:55px;
+    padding-left:45px;
     font-size: 13px;
 }
 
-#message p:only-child {
-    margin-top: 5px;
-}
 
 /* Add a green text color and a checkmark when the requirements are right */
 .valid {
@@ -31,7 +28,7 @@
 
 /* Add a red text color and an "x" when the requirements are wrong */
 .invalid {
-    color: #c30000;
+    color: #863c3c;
 }
 
 .invalid:before {

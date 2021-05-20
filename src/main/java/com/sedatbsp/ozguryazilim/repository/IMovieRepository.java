@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface IMovieRepository extends JpaRepository<Movie,Long> {
 
-    List<Movie> findByName(String name);
+    Movie findByName(String name);
     List<Movie> findByGenre(String genre);
 
 }

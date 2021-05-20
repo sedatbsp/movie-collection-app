@@ -67,13 +67,21 @@ public class MovieManager implements IMovieService {
 
     }
 
+    @Override
+    public Movie getMovieByName(String name) throws NotFoundException {
+        List<Movie> movie = getAll();
+        for(Movie m : movie){
+            if(m.getName().equals(name)){
+                return m;
+            }
+        }
+        throw new NotFoundException("There is no movie for this name : " + name);
+    }
+
     @Transactional
     @Override
     public List<Movie> find(String name, String searchType) {
-        if(searchType.equals("movie")){
-            return movieRepository.findByName(name);
-        }
-        return movieRepository.findByGenre(name);
+        return null;
     }
 
     @Override

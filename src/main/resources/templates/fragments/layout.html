@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/fragments :: header">
+
+</head>
+<body>
+<div th:replace="fragments/header :: navbar-menu"/>
+<br>
+
+<div layout:fragment="content"></div>
+
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>
