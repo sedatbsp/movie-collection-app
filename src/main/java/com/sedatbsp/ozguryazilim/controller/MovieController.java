@@ -31,9 +31,16 @@ public class MovieController {
     }
 
     @GetMapping("/movies")
-    public String getAll(Model model) {
-        List<Movie> movies = movieService.getAll();
-        model.addAttribute("movies", movies);
+    public String getAll(Model model,String keyword) {
+        //List<Movie> movies = movieService.getAll();
+
+        if(keyword != null){
+            model.addAttribute("movies",movieService.findByKeyword(keyword));
+        }else {
+            model.addAttribute("movies", movieService.getAll());
+        }
+
+
         model.addAttribute("pageTitle", "Filmler");
         return "movies";
     }

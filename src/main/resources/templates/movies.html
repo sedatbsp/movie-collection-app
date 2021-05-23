@@ -33,10 +33,26 @@
     </div>
 
 
-    <a th:href="@{/insert}"><button type="button" class="btn btn-outline-secondary">Film ekle</button></a>
+
     <div class="row">
+        <form th:action="@{/movies}" method="get">
+            <div class="input-group mb-3">
+                <input id="txtSearch" type="text" name="keyword" class="form-control " placeholder="Film adı, Oyuncu adı veya türüne göre ara">
+                <button type="submit" class="btn btn-dark">Ara</button>
+            </div>
+
+        </form>
+        <div class="col float-end">
+            <a th:href="@{/insert}"><button type="button" class="btn btn-outline-secondary">Film ekle</button></a>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+
         <div class="table-responsive">
-            <table class="table caption-top table-sm table-hover table-bordered">
+            <table id="moviesTable" class="table caption-top table-sm table-hover table-bordered display">
                 <caption>Filmleri detaylı inceleyebilmek için media, id veya film adlarından herhangi birine tıklayın.</caption>
                 <thead>
                 <tr class="table-dark">
