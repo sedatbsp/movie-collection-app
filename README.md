@@ -57,6 +57,8 @@ _Run the application_, then open your browser and launch it at **localhost:8080*
 ![](https://i.hizliresim.com/cn5zsll.png)  
 - ### **Movies Page**
 ![](https://i.hizliresim.com/8lnki49.png)  
+- ### **Search**
+![](https://i.hizliresim.com/omu99hl.gif)  
 - ### **Movie Details Page**
 ![](https://i.hizliresim.com/oo2fqhh.png) 
 - ### **Movie Details Page** 
